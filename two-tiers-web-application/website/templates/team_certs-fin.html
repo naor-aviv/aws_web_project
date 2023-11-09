@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content %}
+    <h1 align="center">Users Certificates</h1>
+    <ul class="list-group list-group-flush" id="certs">
+      {% for cert in user.certs %}
+      <li class="list-group-item">
+        {{ user.first_name }}
+        <button type="button" class="collapsible">Open Collapsible</button>
+        <div class="content">
+          <p>Lorem ipsum...</p>
+        </div>
+
+      </li>
+      {% endfor %}
+    </ul>
+    <form method="POST">
+      <textarea name="cert" id="cert" class="form-control"></textarea>
+      <br />
+      <div align="center">
+        <button type="submit" class="btn btn-primary">Add Certificate</button>
+      </div>
+    </form>
+    {% endblock %}
+    
