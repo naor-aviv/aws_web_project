@@ -13,7 +13,7 @@ provider "aws" {
   ignore_tags {
     keys = [
       "Created by",
-      "Date created",
+      "Creation Date",
       "IAM Role Name",
       "IAM User Name"
     ]
