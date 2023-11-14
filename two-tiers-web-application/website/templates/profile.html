@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+    <h1 align="center">{{ user.first_name }} Profile</h1>
+
+    <!-- Display user information -->
+    <div align="center">
+        <p>Email: {{ user.email }}</p>
+        <p>Name: {{ user.first_name }}</p>
+        <p>Number of Certificates: {{ user.certs | length }}</p>
+        <!-- Add other user profile information here -->
+    </div>
+
+    <form method="GET" action="{{ request.referrer }}">
+        <input type="hidden" name="previous_page" value="{{ request.referrer }}">
+        <br />
+        <div align="center">
+            <button type="submit" class="btn btn-primary">Return</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,22 +1,33 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User
-from werkzeug.security import generate_password_hash, check_password_hash
-from . import db
+#from werkzeug.security import generate_password_hash, check_password_hash
+from . import db, bcrypt
 from flask_login import login_user, login_required, logout_user, current_user
-
+from flask_bcrypt import Bcrypt
+from flask import current_app as app
 
 auth = Blueprint('auth', __name__)
 
-
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
+        # Logging device information
+    user_agent = request.headers.get('User-Agent', '')
+    is_mobile = any(keyword in user_agent.lower() for keyword in ['iphone', 'android', 'mobile'])
+    device_type = 'Mobile' if is_mobile else 'PC'
+    app.logger.info(f'Client Device Type: {device_type}')
+
+    # Logging IP information
+    client_ip = request.remote_addr
+    app.logger.info(f'Client IP Address: {client_ip}')
+
+    
     if request.method == 'POST':
         # fetch data
         email = request.form.get('email')
         password = request.form.get('password')
         user = User.query.filter_by(email=email).first()
         if user:
-            if check_password_hash(user.password, password):
+            if bcrypt.check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
@@ -55,8 +66,7 @@ def sign_up():
         elif len(password1) < 7:
             flash('Password must be at least 7 characters.', category='error')
         else:
-            new_user = User(email=email, first_name=first_name, password=generate_password_hash(
-                password1, method='sha256'))
+            new_user = User(email=email, first_name=first_name, password=bcrypt.generate_password_hash(password1).decode('utf-8'))
             #list.append(new_user)
             #print(list[0].email)
             db.session.add(new_user)
@@ -66,3 +76,6 @@ def sign_up():
             return redirect(url_for('views.home'))
 
     return render_template("sign_up.html", user=current_user)
+
+
+

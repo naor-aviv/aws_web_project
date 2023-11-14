@@ -27,15 +27,9 @@ def home():
 
 
 @views.route('/teams-certificates', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def teams_cert():
     UserList = User.query.filter_by().all()
-    #flash(UserList[0].first_name)
-    #for info in UserList:
-    #    Tests1 = info.certs
-    #    for test1 in Tests1:
-     #       print(test1.data)
-        #print(info.certs[0].date)
     return render_template("team_certs.html", user=current_user, UserList=UserList)
 
 

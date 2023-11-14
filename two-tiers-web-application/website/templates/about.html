@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+    <form method="GET" action="{{ request.referrer }}">  {# Specify the relative path directly #}
+        <input type="hidden" name="previous_page" value="{{ request.referrer }}">
+        <h3 align="center">About</h3>
+        <div class="form-group">
+            <label for="name">Naor's web app story:</label>
+        </div>
+        <p>Welcome to the most mind-blowingly average web app you've ever encountered. Brace yourself for an awe-inspiring journey into mediocrity, where our commitment to being exceptionally unremarkable knows no bounds.</p>
+        <p>Prepare to be underwhelmed by our feature set, marvel at our lack of innovation, and revel in the sheer audacity of calling this a "revolutionary" web app. Critics have hailed it as "unimaginative brilliance" and "a true testament to the ordinary."</p>
+        <br />
+        <button type="submit" class="btn btn-primary">Return</button>
+    </form>
+{% endblock %}
+    

@@ -5,7 +5,6 @@ from flask_sqlalchemy import SQLAlchemy
 import cred
 
 
-
 class Cert(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(10000))

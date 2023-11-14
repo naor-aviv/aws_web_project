@@ -29,10 +29,20 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
+        <a class="nav-item nav-link" id="about" href="/about">About</a>
           {% if user.is_authenticated %}
+          <a class="nav-item nav-link" id="profile" href="/profile">
+            <img src="/static/profile.png" alt="Person Icon" class="icon">
+          </a>        
           <a class="nav-item nav-link" id="home" href="/">Home</a>
           <a class="nav-item nav-link" id="home" href="/teams-certificates">Teams Certificates</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+          <style>
+            .icon {
+                width: 25px; /* Adjust the width as needed */
+                height: auto; /* Maintain the aspect ratio */
+            }
+          </style>          
           {% else %}
           <a class="nav-item nav-link" id="login" href="/login">Login</a>
           <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
