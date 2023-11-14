@@ -50,7 +50,7 @@ module "asg" {
   create_iam_instance_profile = false
   iam_instance_profile_arn    = module.iam_assumable_roles.iam_instance_profile_arn
 
-  user_data = (base64encode(templatefile("/home/k8s/projects/aws_web_project/front_user_data.sh", {
+  user_data = (base64encode(templatefile("front_user_data.sh", {
     s3_name = module.s3_bucket.s3_bucket_id
   })))
 
