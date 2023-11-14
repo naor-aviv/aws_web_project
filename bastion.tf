@@ -1,6 +1,6 @@
 module "ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "~> 4.1"
+  version = "~> 5.5"
 
   name = "tf_bastion_host"
 

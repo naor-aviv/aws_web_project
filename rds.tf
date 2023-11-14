@@ -1,7 +1,15 @@
+# Creating random password for the RDS
+
+resource "random_password" "password" {
+  length           = 16
+  special          = true
+  override_special = "!#$%&*()-_=+[]{}<>:?"
+}
+
 module "db" {
   source = "terraform-aws-modules/rds/aws"
   # version    = "4.3.0"
-  version    = "5.0.3"
+  version    = "~> 6.3"
   identifier = "webdb"
 
   engine            = "mysql"
@@ -12,7 +20,7 @@ module "db" {
   db_name  = "webdb"
   username = "admin"
   port     = "3306"
-  create_random_password = true
+  password = random_password.password.result
 
   skip_final_snapshot = true
 

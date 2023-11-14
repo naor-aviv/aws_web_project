@@ -1,7 +1,7 @@
 # S3
 module "s3_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "~> 3.4"
+  version = "~> 3.15"
 
   bucket        = "tf-setup"
   acl           = "private"

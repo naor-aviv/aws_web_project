@@ -3,7 +3,7 @@
 
 module "asg" {
   source  = "terraform-aws-modules/autoscaling/aws"
-  version = "~> 6.5"
+  version = "~> 7.2"
   depends_on = [
     module.db
   ]
