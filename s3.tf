@@ -4,7 +4,6 @@ module "s3_bucket" {
   version = "~> 3.15"
 
   bucket        = "tf-setup"
-  acl           = "private"
   force_destroy = true
   # tags = {
   #   local.resource_name

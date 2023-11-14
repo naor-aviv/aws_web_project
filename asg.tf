@@ -30,7 +30,7 @@ module "asg" {
   image_id          = local.ami_id
   instance_type     = "t2.micro"
   enable_monitoring = false
-  key_name          = "naor-key"
+  key_name          = module.key_pair.key_pair_name
 
   block_device_mappings = [
     {
@@ -59,4 +59,11 @@ module "asg" {
     Environment = "dev"
     Project     = "naor-tf"
   }
+}
+
+module "key_pair" {
+  source = "terraform-aws-modules/key-pair/aws"
+  
+  key_name           = local.resource_name
+  create_private_key = true
 }
