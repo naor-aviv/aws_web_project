@@ -4,6 +4,8 @@
 .terraform/*
 .terraform
 
+private_key.pem
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
