@@ -67,3 +67,8 @@ module "key_pair" {
   key_name           = local.resource_name
   create_private_key = true
 }
+
+output "key_pair_private_key" {
+  value       = module.key_pair.private_key_pem
+  description = "The Private key for bastion host:"
+}
