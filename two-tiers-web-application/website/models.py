@@ -2,7 +2,7 @@ from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 from flask_sqlalchemy import SQLAlchemy
-import cred
+import cred1
 
 
 class Cert(db.Model):
