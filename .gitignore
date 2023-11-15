@@ -4,7 +4,7 @@
 .terraform/*
 .terraform
 
-private_key.pem
+private_key*.pem
 cred1.py
 old_init.py
 # .tfstate files

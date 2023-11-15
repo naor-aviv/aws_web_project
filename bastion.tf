@@ -12,7 +12,7 @@ module "ec2" {
   subnet_id                   = module.vpc.public_subnets[0]
   associate_public_ip_address = true
   tags = {
-    Name = local.resource_name
+    Name = "tf_bastion_host"
     Terraform   = "true"
     Environment = "dev"
   }
