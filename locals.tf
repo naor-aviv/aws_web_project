@@ -1,4 +1,5 @@
 locals {
+  rds_db_name                 = "webapp"
   resource_name               = "tf_web_app"
   az1                         = "eu-central-1a"
   az2                         = "eu-central-1b"

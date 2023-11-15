@@ -18,6 +18,7 @@ resource "aws_s3_object" "s3_user_data" {
   content = templatefile("./two-tiers-web-application/cred.tftpl", {
     rds_endpoint = module.db.db_instance_endpoint
     rds_password = random_password.password.result
+    rds_db       = module.db.db_instance_name
   })
 }
 
