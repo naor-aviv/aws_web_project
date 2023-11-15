@@ -6,7 +6,7 @@ module "ec2" {
 
   ami                         = local.ami_id
   instance_type               = "t2.micro"
-  key_name                    = "naor-key"
+  key_name                    = module.key_pair.key_pair_name
   monitoring                  = true
   vpc_security_group_ids      = [module.bast_sg.security_group_id]
   subnet_id                   = module.vpc.public_subnets[0]
